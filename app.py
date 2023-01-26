@@ -382,5 +382,5 @@ st.write("[MIT Introduction to Deep Learning](http://introtodeeplearning.com/)")
 
 st.subheader("Code sources")
 st.write("[GAN course by Developers Google](https://developers.google.com/machine-learning/gan/summary)")
-st.write("[Deep Convolutional Generative Adversarial Network](https://www.tensorflow.org/tutorials/generative/dcgan)")
+st.write("[Deep Convolutional Generative Adversarial Network by Tensorflow](https://www.tensorflow.org/tutorials/generative/dcgan)")
 
