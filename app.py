@@ -378,9 +378,9 @@ st.markdown("GANs make it possible for Machine Learning to work with multi-modal
 st.subheader("References")
 st.write("Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. Generative Adversarial Networks, 2014. https://doi.org/10.48550/arXiv.1406.2661")
 st.write("Ian J. Goodfellow. NIPS 2016 Tutorial: Generative Adversarial Networks, 2016. https://doi.org/10.48550/arXiv.1701.00160")
-st.write("[MIT Introduction to Deep Learning](http://introtodeeplearning.com/")
+st.write("[MIT Introduction to Deep Learning](http://introtodeeplearning.com/)")
 
 st.subheader("Code sources")
-st.write("[GAN course by Developers Google](https://developers.google.com/machine-learning/gan/summary")
-st.write("[Deep Convolutional Generative Adversarial Network](https://www.tensorflow.org/tutorials/generative/dcgan")
+st.write("[GAN course by Developers Google](https://developers.google.com/machine-learning/gan/summary)")
+st.write("[Deep Convolutional Generative Adversarial Network](https://www.tensorflow.org/tutorials/generative/dcgan)")
 
