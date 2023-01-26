@@ -374,12 +374,12 @@ st.markdown(
 st.subheader("Conclusions")
 st.markdown("In words of the creators, Goodfellow et al, this experiment demonstrates the potential of the framework through qualitative and quantitative evaluation of the generated samples. Training and sampling from generative models is an excellent test of our ability to represent and manipulate high-dimensional probability distributions, which are important objects in a wide variety of applied math and engineering domains. Generative models can also be trained with missing data and can provide predictions on inputs that are missing data. ")
 st.markdown("GANs make it possible for Machine Learning to work with multi-modal outputs, and are crucial to many different state of the art image generation and manipulation systems, and have the potential to enable many other applications in the future."
-            
+
 st.subheader("References")
 st.write("Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, Yoshua Bengio. Generative Adversarial Networks, 2014. https://doi.org/10.48550/arXiv.1406.2661")
 st.write("Ian J. Goodfellow. NIPS 2016 Tutorial: Generative Adversarial Networks, 2016. https://doi.org/10.48550/arXiv.1701.00160")
 st.write("[MIT Introduction to Deep Learning](http://introtodeeplearning.com/")
-            
+
 st.subheader("Code sources")
 st.write("[GAN course by Developers Google](https://developers.google.com/machine-learning/gan/summary")
 st.write("[Deep Convolutional Generative Adversarial Network](https://www.tensorflow.org/tutorials/generative/dcgan")
