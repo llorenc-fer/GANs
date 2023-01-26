@@ -360,3 +360,10 @@ with imageio.get_writer(anim_file, mode='I') as writer:
 """
 st.code(code,language='python')
 st.markdown('Using the library *imageio*, we will be able to create a GIF with all the images saved during the training epochs.')
+
+file_ = open("dcgan.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+
+
