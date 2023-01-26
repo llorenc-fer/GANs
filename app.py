@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-
+import base64
 st.set_page_config(page_title='Generative Adversarial Networks', layout='centered', page_icon='🌇')
 
 #-----empieza la app-----------------------------------------------------------------------------------
@@ -10,7 +10,7 @@ st.image('https://data-science-blog.com/wp-content/uploads/2018/07/deep-learning
 
 st.subheader("Generative Adversarial Networks: brief introduction")
 st.markdown('In 2014, Ian Goodfellow and his colleagues designed the first generative adversarial network(GAN), a class of Machine Learning frameworks consisting of two neural networks competing against each other, with the gain of one agent resulting in the loss of the other.')
-st.image(r'C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Practice Sheet\Synthetic Data\GANformula.png', caption='GAN Scientific Formula, from 2014 original paper')
+st.image('GANformula.png', caption='GAN Scientific Formula, from 2014 original paper')
 st.markdown('The process is as it follows: we train two models simultaneously, a Generative model (G) that learns the distribution of the data, and a Discriminative model (D) that predicts whether a sample came from the training data or from the Generator. The goal of training G is to maximize the likelihood of D making a mistake.')
 
 st.image("https://miro.medium.com/max/1400/1*xOgw_4Wv2KHvGzm_x0zeIQ.webp", caption="Image from towardsdatascience.com")
@@ -96,7 +96,7 @@ with st.expander("*Activation function Leaky ReLU*"):
                 Leaky ReLU is based on ReLU (Rectified Linear Unit), but it has a small slope for negative values instead of a flat slope:
                 """)
         st.image(r"https://production-media.paperswithcode.com/methods/Screen_Shot_2020-05-25_at_3.09.45_PM.png", caption='Formula by paperswithcode.com')
-        st.image(r"C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Practice Sheet\Synthetic Data\relu.png", caption='Image by Massachussets Institute of Technology')
+        st.image("relu.png", caption='Image by Massachussets Institute of Technology')
 
 
 
@@ -151,7 +151,7 @@ generated_image = generator(noise, training=False)
 """
 st.code(code, language='python')
 with st.expander("*Output image*"):
-        st.image(r'C:\Users\lluri\Documents\samplerepo\Upgrade Hub\Practice Sheet\Synthetic Data\randomnoise.png', caption='Random noise generated image')
+        st.image('randomnoise.png', caption='Random noise generated image')
 
 st.subheader('Second Convolutional Neural Network')
 st.markdown('Architecture of the Discriminator model:')
