@@ -1,0 +1,1296 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, None, None,  0           []                               
+                                 3)]                                                              
+                                                                                                  
+ zero_padding2d (ZeroPadding2D)  (None, None, None,   0          ['input_1[0][0]']                
+                                3)                                                                
+                                                                                                  
+ conv1/conv (Conv2D)            (None, None, None,   9408        ['zero_padding2d[0][0]']         
+                                64)                                                               
+                                                                                                  
+ conv1/bn (BatchNormalization)  (None, None, None,   256         ['conv1/conv[0][0]']             
+                                64)                                                               
+                                                                                                  
+ conv1/relu (Activation)        (None, None, None,   0           ['conv1/bn[0][0]']               
+                                64)                                                               
+                                                                                                  
+ zero_padding2d_1 (ZeroPadding2  (None, None, None,   0          ['conv1/relu[0][0]']             
+ D)                             64)                                                               
+                                                                                                  
+ pool1 (MaxPooling2D)           (None, None, None,   0           ['zero_padding2d_1[0][0]']       
+                                64)                                                               
+                                                                                                  
+ conv2_block1_0_bn (BatchNormal  (None, None, None,   256        ['pool1[0][0]']                  
+ ization)                       64)                                                               
+                                                                                                  
+ conv2_block1_0_relu (Activatio  (None, None, None,   0          ['conv2_block1_0_bn[0][0]']      
+ n)                             64)                                                               
+                                                                                                  
+ conv2_block1_1_conv (Conv2D)   (None, None, None,   8192        ['conv2_block1_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block1_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block1_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block1_1_relu (Activatio  (None, None, None,   0          ['conv2_block1_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block1_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block1_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block1_concat (Concatena  (None, None, None,   0          ['pool1[0][0]',                  
+ te)                            96)                               'conv2_block1_2_conv[0][0]']    
+                                                                                                  
+ conv2_block2_0_bn (BatchNormal  (None, None, None,   384        ['conv2_block1_concat[0][0]']    
+ ization)                       96)                                                               
+                                                                                                  
+ conv2_block2_0_relu (Activatio  (None, None, None,   0          ['conv2_block2_0_bn[0][0]']      
+ n)                             96)                                                               
+                                                                                                  
+ conv2_block2_1_conv (Conv2D)   (None, None, None,   12288       ['conv2_block2_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block2_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block2_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block2_1_relu (Activatio  (None, None, None,   0          ['conv2_block2_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block2_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block2_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block2_concat (Concatena  (None, None, None,   0          ['conv2_block1_concat[0][0]',    
+ te)                            128)                              'conv2_block2_2_conv[0][0]']    
+                                                                                                  
+ conv2_block3_0_bn (BatchNormal  (None, None, None,   512        ['conv2_block2_concat[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block3_0_relu (Activatio  (None, None, None,   0          ['conv2_block3_0_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block3_1_conv (Conv2D)   (None, None, None,   16384       ['conv2_block3_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block3_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block3_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block3_1_relu (Activatio  (None, None, None,   0          ['conv2_block3_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block3_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block3_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block3_concat (Concatena  (None, None, None,   0          ['conv2_block2_concat[0][0]',    
+ te)                            160)                              'conv2_block3_2_conv[0][0]']    
+                                                                                                  
+ conv2_block4_0_bn (BatchNormal  (None, None, None,   640        ['conv2_block3_concat[0][0]']    
+ ization)                       160)                                                              
+                                                                                                  
+ conv2_block4_0_relu (Activatio  (None, None, None,   0          ['conv2_block4_0_bn[0][0]']      
+ n)                             160)                                                              
+                                                                                                  
+ conv2_block4_1_conv (Conv2D)   (None, None, None,   20480       ['conv2_block4_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block4_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block4_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block4_1_relu (Activatio  (None, None, None,   0          ['conv2_block4_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block4_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block4_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block4_concat (Concatena  (None, None, None,   0          ['conv2_block3_concat[0][0]',    
+ te)                            192)                              'conv2_block4_2_conv[0][0]']    
+                                                                                                  
+ conv2_block5_0_bn (BatchNormal  (None, None, None,   768        ['conv2_block4_concat[0][0]']    
+ ization)                       192)                                                              
+                                                                                                  
+ conv2_block5_0_relu (Activatio  (None, None, None,   0          ['conv2_block5_0_bn[0][0]']      
+ n)                             192)                                                              
+                                                                                                  
+ conv2_block5_1_conv (Conv2D)   (None, None, None,   24576       ['conv2_block5_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block5_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block5_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block5_1_relu (Activatio  (None, None, None,   0          ['conv2_block5_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block5_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block5_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block5_concat (Concatena  (None, None, None,   0          ['conv2_block4_concat[0][0]',    
+ te)                            224)                              'conv2_block5_2_conv[0][0]']    
+                                                                                                  
+ conv2_block6_0_bn (BatchNormal  (None, None, None,   896        ['conv2_block5_concat[0][0]']    
+ ization)                       224)                                                              
+                                                                                                  
+ conv2_block6_0_relu (Activatio  (None, None, None,   0          ['conv2_block6_0_bn[0][0]']      
+ n)                             224)                                                              
+                                                                                                  
+ conv2_block6_1_conv (Conv2D)   (None, None, None,   28672       ['conv2_block6_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv2_block6_1_bn (BatchNormal  (None, None, None,   512        ['conv2_block6_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv2_block6_1_relu (Activatio  (None, None, None,   0          ['conv2_block6_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv2_block6_2_conv (Conv2D)   (None, None, None,   36864       ['conv2_block6_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv2_block6_concat (Concatena  (None, None, None,   0          ['conv2_block5_concat[0][0]',    
+ te)                            256)                              'conv2_block6_2_conv[0][0]']    
+                                                                                                  
+ pool2_bn (BatchNormalization)  (None, None, None,   1024        ['conv2_block6_concat[0][0]']    
+                                256)                                                              
+                                                                                                  
+ pool2_relu (Activation)        (None, None, None,   0           ['pool2_bn[0][0]']               
+                                256)                                                              
+                                                                                                  
+ pool2_conv (Conv2D)            (None, None, None,   32768       ['pool2_relu[0][0]']             
+                                128)                                                              
+                                                                                                  
+ pool2_pool (AveragePooling2D)  (None, None, None,   0           ['pool2_conv[0][0]']             
+                                128)                                                              
+                                                                                                  
+ conv3_block1_0_bn (BatchNormal  (None, None, None,   512        ['pool2_pool[0][0]']             
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block1_0_relu (Activatio  (None, None, None,   0          ['conv3_block1_0_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block1_1_conv (Conv2D)   (None, None, None,   16384       ['conv3_block1_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block1_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block1_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block1_1_relu (Activatio  (None, None, None,   0          ['conv3_block1_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block1_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block1_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block1_concat (Concatena  (None, None, None,   0          ['pool2_pool[0][0]',             
+ te)                            160)                              'conv3_block1_2_conv[0][0]']    
+                                                                                                  
+ conv3_block2_0_bn (BatchNormal  (None, None, None,   640        ['conv3_block1_concat[0][0]']    
+ ization)                       160)                                                              
+                                                                                                  
+ conv3_block2_0_relu (Activatio  (None, None, None,   0          ['conv3_block2_0_bn[0][0]']      
+ n)                             160)                                                              
+                                                                                                  
+ conv3_block2_1_conv (Conv2D)   (None, None, None,   20480       ['conv3_block2_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block2_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block2_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block2_1_relu (Activatio  (None, None, None,   0          ['conv3_block2_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block2_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block2_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block2_concat (Concatena  (None, None, None,   0          ['conv3_block1_concat[0][0]',    
+ te)                            192)                              'conv3_block2_2_conv[0][0]']    
+                                                                                                  
+ conv3_block3_0_bn (BatchNormal  (None, None, None,   768        ['conv3_block2_concat[0][0]']    
+ ization)                       192)                                                              
+                                                                                                  
+ conv3_block3_0_relu (Activatio  (None, None, None,   0          ['conv3_block3_0_bn[0][0]']      
+ n)                             192)                                                              
+                                                                                                  
+ conv3_block3_1_conv (Conv2D)   (None, None, None,   24576       ['conv3_block3_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block3_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block3_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block3_1_relu (Activatio  (None, None, None,   0          ['conv3_block3_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block3_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block3_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block3_concat (Concatena  (None, None, None,   0          ['conv3_block2_concat[0][0]',    
+ te)                            224)                              'conv3_block3_2_conv[0][0]']    
+                                                                                                  
+ conv3_block4_0_bn (BatchNormal  (None, None, None,   896        ['conv3_block3_concat[0][0]']    
+ ization)                       224)                                                              
+                                                                                                  
+ conv3_block4_0_relu (Activatio  (None, None, None,   0          ['conv3_block4_0_bn[0][0]']      
+ n)                             224)                                                              
+                                                                                                  
+ conv3_block4_1_conv (Conv2D)   (None, None, None,   28672       ['conv3_block4_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block4_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block4_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block4_1_relu (Activatio  (None, None, None,   0          ['conv3_block4_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block4_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block4_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block4_concat (Concatena  (None, None, None,   0          ['conv3_block3_concat[0][0]',    
+ te)                            256)                              'conv3_block4_2_conv[0][0]']    
+                                                                                                  
+ conv3_block5_0_bn (BatchNormal  (None, None, None,   1024       ['conv3_block4_concat[0][0]']    
+ ization)                       256)                                                              
+                                                                                                  
+ conv3_block5_0_relu (Activatio  (None, None, None,   0          ['conv3_block5_0_bn[0][0]']      
+ n)                             256)                                                              
+                                                                                                  
+ conv3_block5_1_conv (Conv2D)   (None, None, None,   32768       ['conv3_block5_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block5_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block5_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block5_1_relu (Activatio  (None, None, None,   0          ['conv3_block5_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block5_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block5_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block5_concat (Concatena  (None, None, None,   0          ['conv3_block4_concat[0][0]',    
+ te)                            288)                              'conv3_block5_2_conv[0][0]']    
+                                                                                                  
+ conv3_block6_0_bn (BatchNormal  (None, None, None,   1152       ['conv3_block5_concat[0][0]']    
+ ization)                       288)                                                              
+                                                                                                  
+ conv3_block6_0_relu (Activatio  (None, None, None,   0          ['conv3_block6_0_bn[0][0]']      
+ n)                             288)                                                              
+                                                                                                  
+ conv3_block6_1_conv (Conv2D)   (None, None, None,   36864       ['conv3_block6_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block6_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block6_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block6_1_relu (Activatio  (None, None, None,   0          ['conv3_block6_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block6_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block6_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block6_concat (Concatena  (None, None, None,   0          ['conv3_block5_concat[0][0]',    
+ te)                            320)                              'conv3_block6_2_conv[0][0]']    
+                                                                                                  
+ conv3_block7_0_bn (BatchNormal  (None, None, None,   1280       ['conv3_block6_concat[0][0]']    
+ ization)                       320)                                                              
+                                                                                                  
+ conv3_block7_0_relu (Activatio  (None, None, None,   0          ['conv3_block7_0_bn[0][0]']      
+ n)                             320)                                                              
+                                                                                                  
+ conv3_block7_1_conv (Conv2D)   (None, None, None,   40960       ['conv3_block7_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block7_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block7_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block7_1_relu (Activatio  (None, None, None,   0          ['conv3_block7_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block7_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block7_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block7_concat (Concatena  (None, None, None,   0          ['conv3_block6_concat[0][0]',    
+ te)                            352)                              'conv3_block7_2_conv[0][0]']    
+                                                                                                  
+ conv3_block8_0_bn (BatchNormal  (None, None, None,   1408       ['conv3_block7_concat[0][0]']    
+ ization)                       352)                                                              
+                                                                                                  
+ conv3_block8_0_relu (Activatio  (None, None, None,   0          ['conv3_block8_0_bn[0][0]']      
+ n)                             352)                                                              
+                                                                                                  
+ conv3_block8_1_conv (Conv2D)   (None, None, None,   45056       ['conv3_block8_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block8_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block8_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block8_1_relu (Activatio  (None, None, None,   0          ['conv3_block8_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block8_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block8_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block8_concat (Concatena  (None, None, None,   0          ['conv3_block7_concat[0][0]',    
+ te)                            384)                              'conv3_block8_2_conv[0][0]']    
+                                                                                                  
+ conv3_block9_0_bn (BatchNormal  (None, None, None,   1536       ['conv3_block8_concat[0][0]']    
+ ization)                       384)                                                              
+                                                                                                  
+ conv3_block9_0_relu (Activatio  (None, None, None,   0          ['conv3_block9_0_bn[0][0]']      
+ n)                             384)                                                              
+                                                                                                  
+ conv3_block9_1_conv (Conv2D)   (None, None, None,   49152       ['conv3_block9_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv3_block9_1_bn (BatchNormal  (None, None, None,   512        ['conv3_block9_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv3_block9_1_relu (Activatio  (None, None, None,   0          ['conv3_block9_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv3_block9_2_conv (Conv2D)   (None, None, None,   36864       ['conv3_block9_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv3_block9_concat (Concatena  (None, None, None,   0          ['conv3_block8_concat[0][0]',    
+ te)                            416)                              'conv3_block9_2_conv[0][0]']    
+                                                                                                  
+ conv3_block10_0_bn (BatchNorma  (None, None, None,   1664       ['conv3_block9_concat[0][0]']    
+ lization)                      416)                                                              
+                                                                                                  
+ conv3_block10_0_relu (Activati  (None, None, None,   0          ['conv3_block10_0_bn[0][0]']     
+ on)                            416)                                                              
+                                                                                                  
+ conv3_block10_1_conv (Conv2D)  (None, None, None,   53248       ['conv3_block10_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv3_block10_1_bn (BatchNorma  (None, None, None,   512        ['conv3_block10_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv3_block10_1_relu (Activati  (None, None, None,   0          ['conv3_block10_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv3_block10_2_conv (Conv2D)  (None, None, None,   36864       ['conv3_block10_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv3_block10_concat (Concaten  (None, None, None,   0          ['conv3_block9_concat[0][0]',    
+ ate)                           448)                              'conv3_block10_2_conv[0][0]']   
+                                                                                                  
+ conv3_block11_0_bn (BatchNorma  (None, None, None,   1792       ['conv3_block10_concat[0][0]']   
+ lization)                      448)                                                              
+                                                                                                  
+ conv3_block11_0_relu (Activati  (None, None, None,   0          ['conv3_block11_0_bn[0][0]']     
+ on)                            448)                                                              
+                                                                                                  
+ conv3_block11_1_conv (Conv2D)  (None, None, None,   57344       ['conv3_block11_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv3_block11_1_bn (BatchNorma  (None, None, None,   512        ['conv3_block11_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv3_block11_1_relu (Activati  (None, None, None,   0          ['conv3_block11_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv3_block11_2_conv (Conv2D)  (None, None, None,   36864       ['conv3_block11_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv3_block11_concat (Concaten  (None, None, None,   0          ['conv3_block10_concat[0][0]',   
+ ate)                           480)                              'conv3_block11_2_conv[0][0]']   
+                                                                                                  
+ conv3_block12_0_bn (BatchNorma  (None, None, None,   1920       ['conv3_block11_concat[0][0]']   
+ lization)                      480)                                                              
+                                                                                                  
+ conv3_block12_0_relu (Activati  (None, None, None,   0          ['conv3_block12_0_bn[0][0]']     
+ on)                            480)                                                              
+                                                                                                  
+ conv3_block12_1_conv (Conv2D)  (None, None, None,   61440       ['conv3_block12_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv3_block12_1_bn (BatchNorma  (None, None, None,   512        ['conv3_block12_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv3_block12_1_relu (Activati  (None, None, None,   0          ['conv3_block12_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv3_block12_2_conv (Conv2D)  (None, None, None,   36864       ['conv3_block12_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv3_block12_concat (Concaten  (None, None, None,   0          ['conv3_block11_concat[0][0]',   
+ ate)                           512)                              'conv3_block12_2_conv[0][0]']   
+                                                                                                  
+ pool3_bn (BatchNormalization)  (None, None, None,   2048        ['conv3_block12_concat[0][0]']   
+                                512)                                                              
+                                                                                                  
+ pool3_relu (Activation)        (None, None, None,   0           ['pool3_bn[0][0]']               
+                                512)                                                              
+                                                                                                  
+ pool3_conv (Conv2D)            (None, None, None,   131072      ['pool3_relu[0][0]']             
+                                256)                                                              
+                                                                                                  
+ pool3_pool (AveragePooling2D)  (None, None, None,   0           ['pool3_conv[0][0]']             
+                                256)                                                              
+                                                                                                  
+ conv4_block1_0_bn (BatchNormal  (None, None, None,   1024       ['pool3_pool[0][0]']             
+ ization)                       256)                                                              
+                                                                                                  
+ conv4_block1_0_relu (Activatio  (None, None, None,   0          ['conv4_block1_0_bn[0][0]']      
+ n)                             256)                                                              
+                                                                                                  
+ conv4_block1_1_conv (Conv2D)   (None, None, None,   32768       ['conv4_block1_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block1_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block1_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block1_1_relu (Activatio  (None, None, None,   0          ['conv4_block1_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block1_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block1_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block1_concat (Concatena  (None, None, None,   0          ['pool3_pool[0][0]',             
+ te)                            288)                              'conv4_block1_2_conv[0][0]']    
+                                                                                                  
+ conv4_block2_0_bn (BatchNormal  (None, None, None,   1152       ['conv4_block1_concat[0][0]']    
+ ization)                       288)                                                              
+                                                                                                  
+ conv4_block2_0_relu (Activatio  (None, None, None,   0          ['conv4_block2_0_bn[0][0]']      
+ n)                             288)                                                              
+                                                                                                  
+ conv4_block2_1_conv (Conv2D)   (None, None, None,   36864       ['conv4_block2_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block2_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block2_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block2_1_relu (Activatio  (None, None, None,   0          ['conv4_block2_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block2_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block2_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block2_concat (Concatena  (None, None, None,   0          ['conv4_block1_concat[0][0]',    
+ te)                            320)                              'conv4_block2_2_conv[0][0]']    
+                                                                                                  
+ conv4_block3_0_bn (BatchNormal  (None, None, None,   1280       ['conv4_block2_concat[0][0]']    
+ ization)                       320)                                                              
+                                                                                                  
+ conv4_block3_0_relu (Activatio  (None, None, None,   0          ['conv4_block3_0_bn[0][0]']      
+ n)                             320)                                                              
+                                                                                                  
+ conv4_block3_1_conv (Conv2D)   (None, None, None,   40960       ['conv4_block3_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block3_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block3_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block3_1_relu (Activatio  (None, None, None,   0          ['conv4_block3_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block3_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block3_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block3_concat (Concatena  (None, None, None,   0          ['conv4_block2_concat[0][0]',    
+ te)                            352)                              'conv4_block3_2_conv[0][0]']    
+                                                                                                  
+ conv4_block4_0_bn (BatchNormal  (None, None, None,   1408       ['conv4_block3_concat[0][0]']    
+ ization)                       352)                                                              
+                                                                                                  
+ conv4_block4_0_relu (Activatio  (None, None, None,   0          ['conv4_block4_0_bn[0][0]']      
+ n)                             352)                                                              
+                                                                                                  
+ conv4_block4_1_conv (Conv2D)   (None, None, None,   45056       ['conv4_block4_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block4_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block4_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block4_1_relu (Activatio  (None, None, None,   0          ['conv4_block4_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block4_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block4_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block4_concat (Concatena  (None, None, None,   0          ['conv4_block3_concat[0][0]',    
+ te)                            384)                              'conv4_block4_2_conv[0][0]']    
+                                                                                                  
+ conv4_block5_0_bn (BatchNormal  (None, None, None,   1536       ['conv4_block4_concat[0][0]']    
+ ization)                       384)                                                              
+                                                                                                  
+ conv4_block5_0_relu (Activatio  (None, None, None,   0          ['conv4_block5_0_bn[0][0]']      
+ n)                             384)                                                              
+                                                                                                  
+ conv4_block5_1_conv (Conv2D)   (None, None, None,   49152       ['conv4_block5_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block5_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block5_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block5_1_relu (Activatio  (None, None, None,   0          ['conv4_block5_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block5_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block5_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block5_concat (Concatena  (None, None, None,   0          ['conv4_block4_concat[0][0]',    
+ te)                            416)                              'conv4_block5_2_conv[0][0]']    
+                                                                                                  
+ conv4_block6_0_bn (BatchNormal  (None, None, None,   1664       ['conv4_block5_concat[0][0]']    
+ ization)                       416)                                                              
+                                                                                                  
+ conv4_block6_0_relu (Activatio  (None, None, None,   0          ['conv4_block6_0_bn[0][0]']      
+ n)                             416)                                                              
+                                                                                                  
+ conv4_block6_1_conv (Conv2D)   (None, None, None,   53248       ['conv4_block6_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block6_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block6_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block6_1_relu (Activatio  (None, None, None,   0          ['conv4_block6_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block6_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block6_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block6_concat (Concatena  (None, None, None,   0          ['conv4_block5_concat[0][0]',    
+ te)                            448)                              'conv4_block6_2_conv[0][0]']    
+                                                                                                  
+ conv4_block7_0_bn (BatchNormal  (None, None, None,   1792       ['conv4_block6_concat[0][0]']    
+ ization)                       448)                                                              
+                                                                                                  
+ conv4_block7_0_relu (Activatio  (None, None, None,   0          ['conv4_block7_0_bn[0][0]']      
+ n)                             448)                                                              
+                                                                                                  
+ conv4_block7_1_conv (Conv2D)   (None, None, None,   57344       ['conv4_block7_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block7_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block7_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block7_1_relu (Activatio  (None, None, None,   0          ['conv4_block7_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block7_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block7_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block7_concat (Concatena  (None, None, None,   0          ['conv4_block6_concat[0][0]',    
+ te)                            480)                              'conv4_block7_2_conv[0][0]']    
+                                                                                                  
+ conv4_block8_0_bn (BatchNormal  (None, None, None,   1920       ['conv4_block7_concat[0][0]']    
+ ization)                       480)                                                              
+                                                                                                  
+ conv4_block8_0_relu (Activatio  (None, None, None,   0          ['conv4_block8_0_bn[0][0]']      
+ n)                             480)                                                              
+                                                                                                  
+ conv4_block8_1_conv (Conv2D)   (None, None, None,   61440       ['conv4_block8_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block8_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block8_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block8_1_relu (Activatio  (None, None, None,   0          ['conv4_block8_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block8_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block8_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block8_concat (Concatena  (None, None, None,   0          ['conv4_block7_concat[0][0]',    
+ te)                            512)                              'conv4_block8_2_conv[0][0]']    
+                                                                                                  
+ conv4_block9_0_bn (BatchNormal  (None, None, None,   2048       ['conv4_block8_concat[0][0]']    
+ ization)                       512)                                                              
+                                                                                                  
+ conv4_block9_0_relu (Activatio  (None, None, None,   0          ['conv4_block9_0_bn[0][0]']      
+ n)                             512)                                                              
+                                                                                                  
+ conv4_block9_1_conv (Conv2D)   (None, None, None,   65536       ['conv4_block9_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv4_block9_1_bn (BatchNormal  (None, None, None,   512        ['conv4_block9_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv4_block9_1_relu (Activatio  (None, None, None,   0          ['conv4_block9_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv4_block9_2_conv (Conv2D)   (None, None, None,   36864       ['conv4_block9_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv4_block9_concat (Concatena  (None, None, None,   0          ['conv4_block8_concat[0][0]',    
+ te)                            544)                              'conv4_block9_2_conv[0][0]']    
+                                                                                                  
+ conv4_block10_0_bn (BatchNorma  (None, None, None,   2176       ['conv4_block9_concat[0][0]']    
+ lization)                      544)                                                              
+                                                                                                  
+ conv4_block10_0_relu (Activati  (None, None, None,   0          ['conv4_block10_0_bn[0][0]']     
+ on)                            544)                                                              
+                                                                                                  
+ conv4_block10_1_conv (Conv2D)  (None, None, None,   69632       ['conv4_block10_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block10_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block10_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block10_1_relu (Activati  (None, None, None,   0          ['conv4_block10_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block10_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block10_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block10_concat (Concaten  (None, None, None,   0          ['conv4_block9_concat[0][0]',    
+ ate)                           576)                              'conv4_block10_2_conv[0][0]']   
+                                                                                                  
+ conv4_block11_0_bn (BatchNorma  (None, None, None,   2304       ['conv4_block10_concat[0][0]']   
+ lization)                      576)                                                              
+                                                                                                  
+ conv4_block11_0_relu (Activati  (None, None, None,   0          ['conv4_block11_0_bn[0][0]']     
+ on)                            576)                                                              
+                                                                                                  
+ conv4_block11_1_conv (Conv2D)  (None, None, None,   73728       ['conv4_block11_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block11_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block11_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block11_1_relu (Activati  (None, None, None,   0          ['conv4_block11_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block11_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block11_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block11_concat (Concaten  (None, None, None,   0          ['conv4_block10_concat[0][0]',   
+ ate)                           608)                              'conv4_block11_2_conv[0][0]']   
+                                                                                                  
+ conv4_block12_0_bn (BatchNorma  (None, None, None,   2432       ['conv4_block11_concat[0][0]']   
+ lization)                      608)                                                              
+                                                                                                  
+ conv4_block12_0_relu (Activati  (None, None, None,   0          ['conv4_block12_0_bn[0][0]']     
+ on)                            608)                                                              
+                                                                                                  
+ conv4_block12_1_conv (Conv2D)  (None, None, None,   77824       ['conv4_block12_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block12_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block12_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block12_1_relu (Activati  (None, None, None,   0          ['conv4_block12_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block12_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block12_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block12_concat (Concaten  (None, None, None,   0          ['conv4_block11_concat[0][0]',   
+ ate)                           640)                              'conv4_block12_2_conv[0][0]']   
+                                                                                                  
+ conv4_block13_0_bn (BatchNorma  (None, None, None,   2560       ['conv4_block12_concat[0][0]']   
+ lization)                      640)                                                              
+                                                                                                  
+ conv4_block13_0_relu (Activati  (None, None, None,   0          ['conv4_block13_0_bn[0][0]']     
+ on)                            640)                                                              
+                                                                                                  
+ conv4_block13_1_conv (Conv2D)  (None, None, None,   81920       ['conv4_block13_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block13_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block13_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block13_1_relu (Activati  (None, None, None,   0          ['conv4_block13_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block13_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block13_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block13_concat (Concaten  (None, None, None,   0          ['conv4_block12_concat[0][0]',   
+ ate)                           672)                              'conv4_block13_2_conv[0][0]']   
+                                                                                                  
+ conv4_block14_0_bn (BatchNorma  (None, None, None,   2688       ['conv4_block13_concat[0][0]']   
+ lization)                      672)                                                              
+                                                                                                  
+ conv4_block14_0_relu (Activati  (None, None, None,   0          ['conv4_block14_0_bn[0][0]']     
+ on)                            672)                                                              
+                                                                                                  
+ conv4_block14_1_conv (Conv2D)  (None, None, None,   86016       ['conv4_block14_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block14_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block14_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block14_1_relu (Activati  (None, None, None,   0          ['conv4_block14_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block14_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block14_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block14_concat (Concaten  (None, None, None,   0          ['conv4_block13_concat[0][0]',   
+ ate)                           704)                              'conv4_block14_2_conv[0][0]']   
+                                                                                                  
+ conv4_block15_0_bn (BatchNorma  (None, None, None,   2816       ['conv4_block14_concat[0][0]']   
+ lization)                      704)                                                              
+                                                                                                  
+ conv4_block15_0_relu (Activati  (None, None, None,   0          ['conv4_block15_0_bn[0][0]']     
+ on)                            704)                                                              
+                                                                                                  
+ conv4_block15_1_conv (Conv2D)  (None, None, None,   90112       ['conv4_block15_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block15_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block15_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block15_1_relu (Activati  (None, None, None,   0          ['conv4_block15_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block15_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block15_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block15_concat (Concaten  (None, None, None,   0          ['conv4_block14_concat[0][0]',   
+ ate)                           736)                              'conv4_block15_2_conv[0][0]']   
+                                                                                                  
+ conv4_block16_0_bn (BatchNorma  (None, None, None,   2944       ['conv4_block15_concat[0][0]']   
+ lization)                      736)                                                              
+                                                                                                  
+ conv4_block16_0_relu (Activati  (None, None, None,   0          ['conv4_block16_0_bn[0][0]']     
+ on)                            736)                                                              
+                                                                                                  
+ conv4_block16_1_conv (Conv2D)  (None, None, None,   94208       ['conv4_block16_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block16_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block16_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block16_1_relu (Activati  (None, None, None,   0          ['conv4_block16_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block16_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block16_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block16_concat (Concaten  (None, None, None,   0          ['conv4_block15_concat[0][0]',   
+ ate)                           768)                              'conv4_block16_2_conv[0][0]']   
+                                                                                                  
+ conv4_block17_0_bn (BatchNorma  (None, None, None,   3072       ['conv4_block16_concat[0][0]']   
+ lization)                      768)                                                              
+                                                                                                  
+ conv4_block17_0_relu (Activati  (None, None, None,   0          ['conv4_block17_0_bn[0][0]']     
+ on)                            768)                                                              
+                                                                                                  
+ conv4_block17_1_conv (Conv2D)  (None, None, None,   98304       ['conv4_block17_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block17_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block17_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block17_1_relu (Activati  (None, None, None,   0          ['conv4_block17_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block17_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block17_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block17_concat (Concaten  (None, None, None,   0          ['conv4_block16_concat[0][0]',   
+ ate)                           800)                              'conv4_block17_2_conv[0][0]']   
+                                                                                                  
+ conv4_block18_0_bn (BatchNorma  (None, None, None,   3200       ['conv4_block17_concat[0][0]']   
+ lization)                      800)                                                              
+                                                                                                  
+ conv4_block18_0_relu (Activati  (None, None, None,   0          ['conv4_block18_0_bn[0][0]']     
+ on)                            800)                                                              
+                                                                                                  
+ conv4_block18_1_conv (Conv2D)  (None, None, None,   102400      ['conv4_block18_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block18_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block18_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block18_1_relu (Activati  (None, None, None,   0          ['conv4_block18_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block18_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block18_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block18_concat (Concaten  (None, None, None,   0          ['conv4_block17_concat[0][0]',   
+ ate)                           832)                              'conv4_block18_2_conv[0][0]']   
+                                                                                                  
+ conv4_block19_0_bn (BatchNorma  (None, None, None,   3328       ['conv4_block18_concat[0][0]']   
+ lization)                      832)                                                              
+                                                                                                  
+ conv4_block19_0_relu (Activati  (None, None, None,   0          ['conv4_block19_0_bn[0][0]']     
+ on)                            832)                                                              
+                                                                                                  
+ conv4_block19_1_conv (Conv2D)  (None, None, None,   106496      ['conv4_block19_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block19_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block19_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block19_1_relu (Activati  (None, None, None,   0          ['conv4_block19_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block19_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block19_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block19_concat (Concaten  (None, None, None,   0          ['conv4_block18_concat[0][0]',   
+ ate)                           864)                              'conv4_block19_2_conv[0][0]']   
+                                                                                                  
+ conv4_block20_0_bn (BatchNorma  (None, None, None,   3456       ['conv4_block19_concat[0][0]']   
+ lization)                      864)                                                              
+                                                                                                  
+ conv4_block20_0_relu (Activati  (None, None, None,   0          ['conv4_block20_0_bn[0][0]']     
+ on)                            864)                                                              
+                                                                                                  
+ conv4_block20_1_conv (Conv2D)  (None, None, None,   110592      ['conv4_block20_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block20_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block20_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block20_1_relu (Activati  (None, None, None,   0          ['conv4_block20_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block20_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block20_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block20_concat (Concaten  (None, None, None,   0          ['conv4_block19_concat[0][0]',   
+ ate)                           896)                              'conv4_block20_2_conv[0][0]']   
+                                                                                                  
+ conv4_block21_0_bn (BatchNorma  (None, None, None,   3584       ['conv4_block20_concat[0][0]']   
+ lization)                      896)                                                              
+                                                                                                  
+ conv4_block21_0_relu (Activati  (None, None, None,   0          ['conv4_block21_0_bn[0][0]']     
+ on)                            896)                                                              
+                                                                                                  
+ conv4_block21_1_conv (Conv2D)  (None, None, None,   114688      ['conv4_block21_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block21_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block21_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block21_1_relu (Activati  (None, None, None,   0          ['conv4_block21_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block21_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block21_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block21_concat (Concaten  (None, None, None,   0          ['conv4_block20_concat[0][0]',   
+ ate)                           928)                              'conv4_block21_2_conv[0][0]']   
+                                                                                                  
+ conv4_block22_0_bn (BatchNorma  (None, None, None,   3712       ['conv4_block21_concat[0][0]']   
+ lization)                      928)                                                              
+                                                                                                  
+ conv4_block22_0_relu (Activati  (None, None, None,   0          ['conv4_block22_0_bn[0][0]']     
+ on)                            928)                                                              
+                                                                                                  
+ conv4_block22_1_conv (Conv2D)  (None, None, None,   118784      ['conv4_block22_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block22_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block22_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block22_1_relu (Activati  (None, None, None,   0          ['conv4_block22_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block22_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block22_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block22_concat (Concaten  (None, None, None,   0          ['conv4_block21_concat[0][0]',   
+ ate)                           960)                              'conv4_block22_2_conv[0][0]']   
+                                                                                                  
+ conv4_block23_0_bn (BatchNorma  (None, None, None,   3840       ['conv4_block22_concat[0][0]']   
+ lization)                      960)                                                              
+                                                                                                  
+ conv4_block23_0_relu (Activati  (None, None, None,   0          ['conv4_block23_0_bn[0][0]']     
+ on)                            960)                                                              
+                                                                                                  
+ conv4_block23_1_conv (Conv2D)  (None, None, None,   122880      ['conv4_block23_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block23_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block23_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block23_1_relu (Activati  (None, None, None,   0          ['conv4_block23_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block23_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block23_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block23_concat (Concaten  (None, None, None,   0          ['conv4_block22_concat[0][0]',   
+ ate)                           992)                              'conv4_block23_2_conv[0][0]']   
+                                                                                                  
+ conv4_block24_0_bn (BatchNorma  (None, None, None,   3968       ['conv4_block23_concat[0][0]']   
+ lization)                      992)                                                              
+                                                                                                  
+ conv4_block24_0_relu (Activati  (None, None, None,   0          ['conv4_block24_0_bn[0][0]']     
+ on)                            992)                                                              
+                                                                                                  
+ conv4_block24_1_conv (Conv2D)  (None, None, None,   126976      ['conv4_block24_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv4_block24_1_bn (BatchNorma  (None, None, None,   512        ['conv4_block24_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv4_block24_1_relu (Activati  (None, None, None,   0          ['conv4_block24_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv4_block24_2_conv (Conv2D)  (None, None, None,   36864       ['conv4_block24_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv4_block24_concat (Concaten  (None, None, None,   0          ['conv4_block23_concat[0][0]',   
+ ate)                           1024)                             'conv4_block24_2_conv[0][0]']   
+                                                                                                  
+ pool4_bn (BatchNormalization)  (None, None, None,   4096        ['conv4_block24_concat[0][0]']   
+                                1024)                                                             
+                                                                                                  
+ pool4_relu (Activation)        (None, None, None,   0           ['pool4_bn[0][0]']               
+                                1024)                                                             
+                                                                                                  
+ pool4_conv (Conv2D)            (None, None, None,   524288      ['pool4_relu[0][0]']             
+                                512)                                                              
+                                                                                                  
+ pool4_pool (AveragePooling2D)  (None, None, None,   0           ['pool4_conv[0][0]']             
+                                512)                                                              
+                                                                                                  
+ conv5_block1_0_bn (BatchNormal  (None, None, None,   2048       ['pool4_pool[0][0]']             
+ ization)                       512)                                                              
+                                                                                                  
+ conv5_block1_0_relu (Activatio  (None, None, None,   0          ['conv5_block1_0_bn[0][0]']      
+ n)                             512)                                                              
+                                                                                                  
+ conv5_block1_1_conv (Conv2D)   (None, None, None,   65536       ['conv5_block1_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block1_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block1_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block1_1_relu (Activatio  (None, None, None,   0          ['conv5_block1_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block1_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block1_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block1_concat (Concatena  (None, None, None,   0          ['pool4_pool[0][0]',             
+ te)                            544)                              'conv5_block1_2_conv[0][0]']    
+                                                                                                  
+ conv5_block2_0_bn (BatchNormal  (None, None, None,   2176       ['conv5_block1_concat[0][0]']    
+ ization)                       544)                                                              
+                                                                                                  
+ conv5_block2_0_relu (Activatio  (None, None, None,   0          ['conv5_block2_0_bn[0][0]']      
+ n)                             544)                                                              
+                                                                                                  
+ conv5_block2_1_conv (Conv2D)   (None, None, None,   69632       ['conv5_block2_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block2_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block2_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block2_1_relu (Activatio  (None, None, None,   0          ['conv5_block2_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block2_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block2_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block2_concat (Concatena  (None, None, None,   0          ['conv5_block1_concat[0][0]',    
+ te)                            576)                              'conv5_block2_2_conv[0][0]']    
+                                                                                                  
+ conv5_block3_0_bn (BatchNormal  (None, None, None,   2304       ['conv5_block2_concat[0][0]']    
+ ization)                       576)                                                              
+                                                                                                  
+ conv5_block3_0_relu (Activatio  (None, None, None,   0          ['conv5_block3_0_bn[0][0]']      
+ n)                             576)                                                              
+                                                                                                  
+ conv5_block3_1_conv (Conv2D)   (None, None, None,   73728       ['conv5_block3_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block3_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block3_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block3_1_relu (Activatio  (None, None, None,   0          ['conv5_block3_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block3_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block3_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block3_concat (Concatena  (None, None, None,   0          ['conv5_block2_concat[0][0]',    
+ te)                            608)                              'conv5_block3_2_conv[0][0]']    
+                                                                                                  
+ conv5_block4_0_bn (BatchNormal  (None, None, None,   2432       ['conv5_block3_concat[0][0]']    
+ ization)                       608)                                                              
+                                                                                                  
+ conv5_block4_0_relu (Activatio  (None, None, None,   0          ['conv5_block4_0_bn[0][0]']      
+ n)                             608)                                                              
+                                                                                                  
+ conv5_block4_1_conv (Conv2D)   (None, None, None,   77824       ['conv5_block4_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block4_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block4_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block4_1_relu (Activatio  (None, None, None,   0          ['conv5_block4_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block4_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block4_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block4_concat (Concatena  (None, None, None,   0          ['conv5_block3_concat[0][0]',    
+ te)                            640)                              'conv5_block4_2_conv[0][0]']    
+                                                                                                  
+ conv5_block5_0_bn (BatchNormal  (None, None, None,   2560       ['conv5_block4_concat[0][0]']    
+ ization)                       640)                                                              
+                                                                                                  
+ conv5_block5_0_relu (Activatio  (None, None, None,   0          ['conv5_block5_0_bn[0][0]']      
+ n)                             640)                                                              
+                                                                                                  
+ conv5_block5_1_conv (Conv2D)   (None, None, None,   81920       ['conv5_block5_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block5_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block5_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block5_1_relu (Activatio  (None, None, None,   0          ['conv5_block5_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block5_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block5_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block5_concat (Concatena  (None, None, None,   0          ['conv5_block4_concat[0][0]',    
+ te)                            672)                              'conv5_block5_2_conv[0][0]']    
+                                                                                                  
+ conv5_block6_0_bn (BatchNormal  (None, None, None,   2688       ['conv5_block5_concat[0][0]']    
+ ization)                       672)                                                              
+                                                                                                  
+ conv5_block6_0_relu (Activatio  (None, None, None,   0          ['conv5_block6_0_bn[0][0]']      
+ n)                             672)                                                              
+                                                                                                  
+ conv5_block6_1_conv (Conv2D)   (None, None, None,   86016       ['conv5_block6_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block6_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block6_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block6_1_relu (Activatio  (None, None, None,   0          ['conv5_block6_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block6_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block6_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block6_concat (Concatena  (None, None, None,   0          ['conv5_block5_concat[0][0]',    
+ te)                            704)                              'conv5_block6_2_conv[0][0]']    
+                                                                                                  
+ conv5_block7_0_bn (BatchNormal  (None, None, None,   2816       ['conv5_block6_concat[0][0]']    
+ ization)                       704)                                                              
+                                                                                                  
+ conv5_block7_0_relu (Activatio  (None, None, None,   0          ['conv5_block7_0_bn[0][0]']      
+ n)                             704)                                                              
+                                                                                                  
+ conv5_block7_1_conv (Conv2D)   (None, None, None,   90112       ['conv5_block7_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block7_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block7_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block7_1_relu (Activatio  (None, None, None,   0          ['conv5_block7_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block7_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block7_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block7_concat (Concatena  (None, None, None,   0          ['conv5_block6_concat[0][0]',    
+ te)                            736)                              'conv5_block7_2_conv[0][0]']    
+                                                                                                  
+ conv5_block8_0_bn (BatchNormal  (None, None, None,   2944       ['conv5_block7_concat[0][0]']    
+ ization)                       736)                                                              
+                                                                                                  
+ conv5_block8_0_relu (Activatio  (None, None, None,   0          ['conv5_block8_0_bn[0][0]']      
+ n)                             736)                                                              
+                                                                                                  
+ conv5_block8_1_conv (Conv2D)   (None, None, None,   94208       ['conv5_block8_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block8_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block8_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block8_1_relu (Activatio  (None, None, None,   0          ['conv5_block8_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block8_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block8_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block8_concat (Concatena  (None, None, None,   0          ['conv5_block7_concat[0][0]',    
+ te)                            768)                              'conv5_block8_2_conv[0][0]']    
+                                                                                                  
+ conv5_block9_0_bn (BatchNormal  (None, None, None,   3072       ['conv5_block8_concat[0][0]']    
+ ization)                       768)                                                              
+                                                                                                  
+ conv5_block9_0_relu (Activatio  (None, None, None,   0          ['conv5_block9_0_bn[0][0]']      
+ n)                             768)                                                              
+                                                                                                  
+ conv5_block9_1_conv (Conv2D)   (None, None, None,   98304       ['conv5_block9_0_relu[0][0]']    
+                                128)                                                              
+                                                                                                  
+ conv5_block9_1_bn (BatchNormal  (None, None, None,   512        ['conv5_block9_1_conv[0][0]']    
+ ization)                       128)                                                              
+                                                                                                  
+ conv5_block9_1_relu (Activatio  (None, None, None,   0          ['conv5_block9_1_bn[0][0]']      
+ n)                             128)                                                              
+                                                                                                  
+ conv5_block9_2_conv (Conv2D)   (None, None, None,   36864       ['conv5_block9_1_relu[0][0]']    
+                                32)                                                               
+                                                                                                  
+ conv5_block9_concat (Concatena  (None, None, None,   0          ['conv5_block8_concat[0][0]',    
+ te)                            800)                              'conv5_block9_2_conv[0][0]']    
+                                                                                                  
+ conv5_block10_0_bn (BatchNorma  (None, None, None,   3200       ['conv5_block9_concat[0][0]']    
+ lization)                      800)                                                              
+                                                                                                  
+ conv5_block10_0_relu (Activati  (None, None, None,   0          ['conv5_block10_0_bn[0][0]']     
+ on)                            800)                                                              
+                                                                                                  
+ conv5_block10_1_conv (Conv2D)  (None, None, None,   102400      ['conv5_block10_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block10_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block10_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block10_1_relu (Activati  (None, None, None,   0          ['conv5_block10_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block10_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block10_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block10_concat (Concaten  (None, None, None,   0          ['conv5_block9_concat[0][0]',    
+ ate)                           832)                              'conv5_block10_2_conv[0][0]']   
+                                                                                                  
+ conv5_block11_0_bn (BatchNorma  (None, None, None,   3328       ['conv5_block10_concat[0][0]']   
+ lization)                      832)                                                              
+                                                                                                  
+ conv5_block11_0_relu (Activati  (None, None, None,   0          ['conv5_block11_0_bn[0][0]']     
+ on)                            832)                                                              
+                                                                                                  
+ conv5_block11_1_conv (Conv2D)  (None, None, None,   106496      ['conv5_block11_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block11_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block11_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block11_1_relu (Activati  (None, None, None,   0          ['conv5_block11_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block11_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block11_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block11_concat (Concaten  (None, None, None,   0          ['conv5_block10_concat[0][0]',   
+ ate)                           864)                              'conv5_block11_2_conv[0][0]']   
+                                                                                                  
+ conv5_block12_0_bn (BatchNorma  (None, None, None,   3456       ['conv5_block11_concat[0][0]']   
+ lization)                      864)                                                              
+                                                                                                  
+ conv5_block12_0_relu (Activati  (None, None, None,   0          ['conv5_block12_0_bn[0][0]']     
+ on)                            864)                                                              
+                                                                                                  
+ conv5_block12_1_conv (Conv2D)  (None, None, None,   110592      ['conv5_block12_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block12_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block12_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block12_1_relu (Activati  (None, None, None,   0          ['conv5_block12_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block12_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block12_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block12_concat (Concaten  (None, None, None,   0          ['conv5_block11_concat[0][0]',   
+ ate)                           896)                              'conv5_block12_2_conv[0][0]']   
+                                                                                                  
+ conv5_block13_0_bn (BatchNorma  (None, None, None,   3584       ['conv5_block12_concat[0][0]']   
+ lization)                      896)                                                              
+                                                                                                  
+ conv5_block13_0_relu (Activati  (None, None, None,   0          ['conv5_block13_0_bn[0][0]']     
+ on)                            896)                                                              
+                                                                                                  
+ conv5_block13_1_conv (Conv2D)  (None, None, None,   114688      ['conv5_block13_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block13_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block13_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block13_1_relu (Activati  (None, None, None,   0          ['conv5_block13_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block13_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block13_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block13_concat (Concaten  (None, None, None,   0          ['conv5_block12_concat[0][0]',   
+ ate)                           928)                              'conv5_block13_2_conv[0][0]']   
+                                                                                                  
+ conv5_block14_0_bn (BatchNorma  (None, None, None,   3712       ['conv5_block13_concat[0][0]']   
+ lization)                      928)                                                              
+                                                                                                  
+ conv5_block14_0_relu (Activati  (None, None, None,   0          ['conv5_block14_0_bn[0][0]']     
+ on)                            928)                                                              
+                                                                                                  
+ conv5_block14_1_conv (Conv2D)  (None, None, None,   118784      ['conv5_block14_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block14_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block14_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block14_1_relu (Activati  (None, None, None,   0          ['conv5_block14_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block14_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block14_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block14_concat (Concaten  (None, None, None,   0          ['conv5_block13_concat[0][0]',   
+ ate)                           960)                              'conv5_block14_2_conv[0][0]']   
+                                                                                                  
+ conv5_block15_0_bn (BatchNorma  (None, None, None,   3840       ['conv5_block14_concat[0][0]']   
+ lization)                      960)                                                              
+                                                                                                  
+ conv5_block15_0_relu (Activati  (None, None, None,   0          ['conv5_block15_0_bn[0][0]']     
+ on)                            960)                                                              
+                                                                                                  
+ conv5_block15_1_conv (Conv2D)  (None, None, None,   122880      ['conv5_block15_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block15_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block15_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block15_1_relu (Activati  (None, None, None,   0          ['conv5_block15_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block15_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block15_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block15_concat (Concaten  (None, None, None,   0          ['conv5_block14_concat[0][0]',   
+ ate)                           992)                              'conv5_block15_2_conv[0][0]']   
+                                                                                                  
+ conv5_block16_0_bn (BatchNorma  (None, None, None,   3968       ['conv5_block15_concat[0][0]']   
+ lization)                      992)                                                              
+                                                                                                  
+ conv5_block16_0_relu (Activati  (None, None, None,   0          ['conv5_block16_0_bn[0][0]']     
+ on)                            992)                                                              
+                                                                                                  
+ conv5_block16_1_conv (Conv2D)  (None, None, None,   126976      ['conv5_block16_0_relu[0][0]']   
+                                128)                                                              
+                                                                                                  
+ conv5_block16_1_bn (BatchNorma  (None, None, None,   512        ['conv5_block16_1_conv[0][0]']   
+ lization)                      128)                                                              
+                                                                                                  
+ conv5_block16_1_relu (Activati  (None, None, None,   0          ['conv5_block16_1_bn[0][0]']     
+ on)                            128)                                                              
+                                                                                                  
+ conv5_block16_2_conv (Conv2D)  (None, None, None,   36864       ['conv5_block16_1_relu[0][0]']   
+                                32)                                                               
+                                                                                                  
+ conv5_block16_concat (Concaten  (None, None, None,   0          ['conv5_block15_concat[0][0]',   
+ ate)                           1024)                             'conv5_block16_2_conv[0][0]']   
+                                                                                                  
+ bn (BatchNormalization)        (None, None, None,   4096        ['conv5_block16_concat[0][0]']   
+                                1024)                                                             
+                                                                                                  
+ relu (Activation)              (None, None, None,   0           ['bn[0][0]']                     
+                                1024)                                                             
+                                                                                                  
+ global_average_pooling2d (Glob  (None, 1024)        0           ['relu[0][0]']                   
+ alAveragePooling2D)                                                                              
+                                                                                                  
+ dense (Dense)                  (None, 14)           14350       ['global_average_pooling2d[0][0]'
+                                                                 ]                                
+                                                                                                  
+==================================================================================================
+Total params: 7,051,854
+Trainable params: 6,968,206
+Non-trainable params: 83,648
+__________________________________________________________________________________________________
